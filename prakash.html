@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Your Eyes Only — Happy 5th Month Anniversary</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans & Caveat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Canvas Confetti & html2canvas for Keepsake Export -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                        script: ['"Caveat"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Obsidian Dark Glassmorphism Theme */
+        body {
+            background-color: #07050a;
+            color: #f8fafc;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 16% 12%, rgba(244, 63, 94, 0.16) 0%, transparent 45%),
+                radial-gradient(circle at 84% 48%, rgba(244, 162, 156, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 50% 90%, rgba(217, 119, 6, 0.11) 0%, transparent 50%);
+        }
+
+        .glass-panel {
+            background: rgba(18, 13, 25, 0.68);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 14px 44px rgba(0, 0, 0, 0.6);
+        }
+
+        .glass-rose-glow {
+            border: 1px solid rgba(244, 162, 156, 0.34);
+            box-shadow: 0 0 34px rgba(244, 63, 94, 0.14), inset 0 0 22px rgba(253, 230, 138, 0.05);
+        }
+
+        .text-champagne-rose {
+            background: linear-gradient(135deg, #fef3c7 0%, #f4a29c 48%, #fb7185 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Pulsing Vault Ring */
+        @keyframes pulseRing {
+            0%, 100% { box-shadow: 0 0 22px rgba(244, 63, 94, 0.35), 0 0 0 0 rgba(244, 63, 94, 0.28); }
+            50% { box-shadow: 0 0 36px rgba(253, 230, 138, 0.45), 0 0 0 10px rgba(244, 63, 94, 0); }
+        }
+        .vault-ring-pulse {
+            animation: pulseRing 2.8s infinite ease-in-out;
+        }
+
+        /* Shake Animation on Wrong PIN */
+        @keyframes shakeError {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+        .animate-shake {
+            animation: shakeError 0.42s ease-in-out;
+        }
+
+        /* Unfolding Secret Letter Animation */
+        @keyframes unfoldLetter {
+            0% { opacity: 0; transform: translateY(18px) scale(0.97); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .letter-unfold {
+            animation: unfoldLetter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* 3D Flip Cards for Stage 5 */
+        .flip-card {
+            perspective: 1100px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-front, .flip-back {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 1.5rem;
+        }
+        .flip-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Perforated Ticket Cutouts for Stage 6 */
+        .ticket-notch-left, .ticket-notch-right {
+            position: absolute;
+            top: 50%;
+            width: 26px;
+            height: 26px;
+            background-color: #07050a;
+            border-radius: 9999px;
+            transform: translateY(-50%);
+            z-index: 20;
+            border: 1px solid rgba(253, 230, 138, 0.35);
+        }
+        .ticket-notch-left { left: -14px; }
+        .ticket-notch-right { right: -14px; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #07050a; }
+        ::-webkit-scrollbar-thumb { background: rgba(244, 162, 156, 0.3); border-radius: 9999px; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-rose-500/30 selection:text-rose-100">
+
+    <!-- Floating Rose Petal & Gold Stardust Background Canvas -->
+    <canvas id="ambientCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Floating Toast Notification -->
+    <div id="toastBanner" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 translate-y-4">
+        <div class="glass-panel glass-rose-glow px-5 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm text-amber-100 shadow-2xl">
+            <i class="fa-solid fa-sparkles text-rose-400"></i>
+            <span id="toastMessage">Secret unlocked!</span>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         FLOATING GLASS NAVBAR
+         ===================================================================== -->
+    <header class="sticky top-0 z-40 px-4 sm:px-6 pt-3 pb-2">
+        <div class="max-w-6xl mx-auto glass-panel rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-rose-500 to-amber-200 flex items-center justify-center text-slate-950 text-xs font-bold shadow">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <div>
+                    <span class="font-serif italic text-base sm:text-lg text-white font-semibold tracking-wide">05 Months Secret Vault</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="openCustomizeModal()" class="px-3.5 sm:px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/15 border border-[#f4a29c]/40 text-xs font-medium text-rose-100 flex items-center gap-2 transition active:scale-95">
+                    <i class="fa-solid fa-camera-retro text-[#fde68a]"></i>
+                    <span>Personalize & Photos</span>
+                </button>
+                <button id="reLockBtn" onclick="lockVault()" class="hidden px-3.5 py-1.5 rounded-full bg-rose-500/20 hover:bg-rose-500/35 border border-rose-400/50 text-xs font-medium text-rose-200 flex items-center gap-1.5 transition active:scale-95" title="Re-Lock Vault">
+                    <i class="fa-solid fa-lock text-rose-400"></i>
+                    <span class="hidden sm:inline">Re-Lock Vault</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+         STAGE 1: THE 4-DIGIT SECRET PASSCODE VAULT
+         ===================================================================== -->
+    <section id="vaultStage" class="relative z-10 min-h-[88vh] flex items-center justify-center px-4 py-8">
+        <div id="vaultCard" class="glass-panel glass-rose-glow rounded-3xl max-w-md w-full p-7 sm:p-10 text-center relative overflow-hidden">
+            <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-56 h-56 rounded-full bg-rose-500/20 blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10">
+                <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-rose-500/30 to-amber-200/15 border border-[#f4a29c]/50 flex items-center justify-center text-[#fde68a] text-2xl vault-ring-pulse mb-5">
+                    <i id="vaultPadlockIcon" class="fa-solid fa-lock"></i>
+                </div>
+
+                <span class="text-[11px] uppercase tracking-[0.25em] text-[#f4a29c] font-semibold">Encrypted Love Capsule</span>
+                <h1 class="font-serif text-2xl sm:text-3xl font-bold text-white mt-2">For Your Eyes Only — 5 Months of Us</h1>
+                <p class="text-xs sm:text-sm text-slate-300/90 mt-2.5 leading-relaxed">
+                    Five unforgettable months sealed behind our secret code.<br>
+                    <span class="text-[#fde68a]/90 italic">Enter the 4-digit PIN to unseal</span>
+                </p>
+
+                <!-- 4-Digit Glowing PIN Display -->
+                <div class="flex justify-center gap-3.5 my-6" id="pinDotsContainer">
+                    <div class="pin-dot w-12 h-14 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center text-xl font-bold text-[#fde68a] transition-all"></div>
+                    <div class="pin-dot w-12 h-14 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center text-xl font-bold text-[#fde68a] transition-all"></div>
+                    <div class="pin-dot w-12 h-14 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center text-xl font-bold text-[#fde68a] transition-all"></div>
+                    <div class="pin-dot w-12 h-14 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center text-xl font-bold text-[#fde68a] transition-all"></div>
+                </div>
+
+                <!-- Tactile Glass Keypad -->
+                <div class="grid grid-cols-3 gap-2.5 max-w-[270px] mx-auto">
+                    <button type="button" onclick="pressDigit('1')" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 font-serif text-xl font-semibold text-white transition">1</button>
+                    <button type="button" onclick="pressDigit('2')" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 font-serif text-xl font-semibold text-white transition">2</button>
+                    <button type="button" onclick="pressDigit('3')" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 font-serif text-xl font-semibold text-white transition">3</button>
+                    <button type="button" onclick="pressDigit('4')" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 font-serif text-xl font-semibold text-white transition">4</button>
+                    <button type="button" onclick="pressDigit('5')" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 font-serif text-xl font-semibold text-white transition">5</button>
+                    <button type="button" onclick="pressDigit('6')" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 font-serif text-xl font-semibold text-white transition">6</button>
+                    <button type="button" onclick="pressDigit('7')" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 font-serif text-xl font-semibold text-white transition">7</button>
+                    <button type="button" onclick="pressDigit('8')" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 font-serif text-xl font-semibold text-white transition">8</button>
+                    <button type="button" onclick="pressDigit('9')" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 font-serif text-xl font-semibold text-white transition">9</button>
+                    <button type="button" onclick="clearPin()" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-rose-500/20 active:scale-95 border border-white/10 text-xs uppercase tracking-wider text-slate-300 transition">Clear</button>
+                    <button type="button" onclick="pressDigit('0')" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 font-serif text-xl font-semibold text-white transition">0</button>
+                    <button type="button" onclick="backspacePin()" class="h-13 py-3 rounded-2xl bg-white/5 hover:bg-white/15 active:scale-95 border border-white/10 text-sm text-slate-300 transition"><i class="fa-solid fa-delete-left"></i></button>
+                </div>
+
+                <!-- Toggleable Custom Hint -->
+                <div class="mt-6 flex flex-col items-center gap-2">
+                    <button type="button" onclick="toggleHint()" class="text-xs text-[#f4a29c] hover:text-amber-200 underline underline-offset-4 transition">
+                        Need a hint?
+                    </button>
+                    <p id="hintDisplay" class="hidden text-xs text-amber-200 bg-amber-500/10 border border-amber-400/30 px-4 py-1.5 rounded-full"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         MAIN UNLOCKED SECRET EXPERIENCE (STAGES 2 TO 6)
+         ===================================================================== -->
+    <main id="unlockedExperience" class="hidden relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28 pb-24 pt-6">
+
+        <!-- STAGE 2: HERO SPOTLIGHT, LIVE 5-MONTH CLOCK & COUPLE PHOTO FRAME -->
+        <section class="text-center pt-4">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border-rose-400/40 text-xs uppercase tracking-[0.2em] text-[#f4a29c] mb-5">
+                <i class="fa-solid fa-sparkles text-[#fde68a]"></i>
+                <span id="heroDateBadge">Together Since Jul 13, 2026</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight max-w-4xl mx-auto text-white">
+                Five Months of Loving You,<br>
+                <span id="heroPartnerName" class="text-champagne-rose italic font-semibold">My Love</span>
+            </h1>
+
+            <p id="heroSubtitle" class="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-slate-300/90 font-light leading-relaxed">
+                Every second since our story began has been brighter, sweeter, and full of magic. Welcome to our private capsule celebrating 5 unforgettable months together.
+            </p>
+
+            <!-- Real-Time Ticking Relationship Clock -->
+            <div class="mt-8 grid grid-cols-5 gap-2 sm:gap-4 max-w-xl mx-auto">
+                <div class="glass-panel rounded-2xl py-3 sm:py-4 px-1">
+                    <span id="clockMonths" class="font-serif text-2xl sm:text-3xl font-bold text-[#fde68a] block">5</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-[#f4a29c]">Months</span>
+                </div>
+                <div class="glass-panel rounded-2xl py-3 sm:py-4 px-1">
+                    <span id="clockDays" class="font-serif text-2xl sm:text-3xl font-bold text-white block">0</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-400">Days</span>
+                </div>
+                <div class="glass-panel rounded-2xl py-3 sm:py-4 px-1">
+                    <span id="clockHours" class="font-serif text-2xl sm:text-3xl font-bold text-white block">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-400">Hours</span>
+                </div>
+                <div class="glass-panel rounded-2xl py-3 sm:py-4 px-1">
+                    <span id="clockMinutes" class="font-serif text-2xl sm:text-3xl font-bold text-white block">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-400">Mins</span>
+                </div>
+                <div class="glass-panel rounded-2xl py-3 sm:py-4 px-1">
+                    <span id="clockSeconds" class="font-serif text-2xl sm:text-3xl font-bold text-rose-400 block">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-400">Secs</span>
+                </div>
+            </div>
+
+            <!-- Gold-Rimmed Glassmorphic Couple Spotlight Photo Frame -->
+            <div class="mt-10 max-w-md mx-auto">
+                <div class="glass-panel glass-rose-glow rounded-3xl p-3.5 sm:p-4 border border-[#fde68a]/45 shadow-[0_24px_60px_rgba(0,0,0,0.7)] transition-transform duration-500 hover:scale-[1.01]">
+                    <div class="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-gradient-to-br from-[#3b0d22] via-[#1c0f26] to-[#0d0914] border border-white/10">
+                        <img id="heroPhotoImg" src="" alt="Our Favorite Couple Photo" crossorigin="anonymous" onerror="handleImageFallback(this, 'Our Favorite Photo')" class="w-full h-full object-cover">
+
+                        <!-- Floating Change Photo Button -->
+                        <button type="button" onclick="triggerDirectUpload('hero')" class="absolute bottom-3 right-3 px-3.5 py-2 rounded-full bg-black/75 hover:bg-rose-600 backdrop-blur-md border border-[#fde68a]/50 text-white text-xs font-medium flex items-center gap-2 shadow-lg transition active:scale-95">
+                            <i class="fa-solid fa-camera text-[#fde68a]"></i>
+                    
+                        </button>
+                    </div>
+
+                    <!-- Editable Handwritten Polaroid Caption -->
+                    <div class="pt-3.5 pb-1 px-2 flex items-center justify-between gap-2">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <p id="heroCaptionDisplay" contenteditable="true" onblur="saveInlineCaption('heroPhotoCaption', this.textContent)" title="Click to edit handwritten caption" class="font-script text-xl sm:text-2xl text-[#fde68a] truncate focus:outline-none focus:underline">
+                                5 months with my favorite person
+                            </p>
+                            <i class="fa-solid fa-pen text-[10px] text-slate-400 shrink-0"></i>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-[#f4a29c] font-semibold shrink-0">05 MONTHS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STAGE 3: INTERACTIVE CRIMSON & GOLD WAX-SEALED SECRET LETTER WITH POLAROID -->
+            <div class="mt-16 max-w-3xl mx-auto">
+                <!-- Sealed Envelope Card -->
+                <div id="sealedLetterCard" onclick="toggleLetter(true)" class="cursor-pointer group glass-panel glass-rose-glow rounded-3xl p-8 sm:p-12 relative overflow-hidden transition-all duration-500 hover:scale-[1.01]">
+                    <div class="absolute inset-0 opacity-25 pointer-events-none">
+                        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <path d="M0,0 L50,56 L100,0" fill="none" stroke="#fde68a" stroke-width="0.45"/>
+                            <path d="M0,100 L42,48 M100,100 L58,48" fill="none" stroke="#fb7185" stroke-width="0.45"/>
+                        </svg>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center">
+                        <!-- Glowing Crimson & Gold "05" Wax Emblem -->
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-rose-600 via-rose-800 to-red-950 border-2 border-[#fde68a] shadow-[0_0_32px_rgba(244,63,94,0.65)] flex flex-col items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="font-serif text-2xl font-bold text-[#fde68a] leading-none">05</span>
+                            <span class="text-[8px] uppercase tracking-widest text-amber-100/90 mt-0.5">SEALED</span>
+                        </div>
+                        <h2 class="font-serif text-2xl sm:text-3xl text-white mt-5">Tap to Break Seal</h2>
+                        <p class="text-xs uppercase tracking-[0.22em] text-[#f4a29c] mt-2">Personal 5th-Month Secret Letter</p>
+                    </div>
+                </div>
+
+                <!-- Unfolded Parchment-Inspired Dark Glass Letter + Tilted Polaroid -->
+                <div id="unfoldedLetterCard" class="hidden glass-panel glass-rose-glow rounded-3xl p-7 sm:p-12 text-left letter-unfold bg-gradient-to-br from-[#1d1428]/90 via-[#150f1e]/90 to-[#1f1220]/90">
+                    <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-6">
+                        <span class="text-xs uppercase tracking-[0.2em] text-[#fde68a]">5th Month Secret Wish</span>
+                        <div class="flex items-center gap-4">
+                            <button type="button" onclick="openCustomizeModal()" class="text-xs text-[#f4a29c] hover:text-white flex items-center gap-1 transition">
+                                <i class="fa-solid fa-pen"></i> Edit Letter
+                            </button>
+                            <button type="button" onclick="toggleLetter(false)" class="text-xs text-slate-400 hover:text-white flex items-center gap-1.5 transition">
+                                <i class="fa-solid fa-lock"></i> Re-Seal
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-7 md:gap-8 items-start">
+                        <!-- Letter Text Column -->
+                        <div class="flex-1 order-2 md:order-1">
+                            <p id="letterGreeting" class="font-serif italic text-2xl sm:text-3xl text-[#f4a29c] mb-4">My dearest Bachhawwwww,</p>
+                            <div id="letterBodyContainer" class="space-y-4 text-sm sm:text-base text-slate-200/95 font-light leading-relaxed">
+                                <!-- Rendered via JS -->
+                            </div>
+                        </div>
+
+                        <!-- Tilted Polaroid Photo Tucked Inside Letter -->
+                        <div class="w-52 sm:w-56 mx-auto md:mx-0 shrink-0 order-1 md:order-2 transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                            <div class="bg-[#fdfaf5] p-3 pb-4 rounded-xl shadow-[0_18px_40px_rgba(0,0,0,0.7)] border border-amber-200/60 text-slate-900">
+                                <div class="relative aspect-square w-full rounded-lg overflow-hidden bg-[#261124]">
+                                    <img id="letterPhotoImg" src="" alt="Polaroid Snapshot" crossorigin="anonymous" onerror="handleImageFallback(this, '5 Months Snapshot')" class="w-full h-full object-cover">
+
+                                    <button type="button" onclick="triggerDirectUpload('letter')" class="absolute bottom-2 right-2 px-2.5 py-1 rounded-full bg-black/75 hover:bg-rose-600 text-white text-[10px] font-medium flex items-center gap-1 shadow transition">
+                                        <i class="fa-solid fa-camera text-[#fde68a]"></i>
+                                        <span>Upload</span>
+                                    </button>
+                                </div>
+                                <p id="letterCaptionDisplay" contenteditable="true" onblur="saveInlineCaption('letterPhotoCaption', this.textContent)" title="Click to edit Polaroid caption" class="font-script text-center text-xl text-slate-800 mt-2.5 font-semibold focus:outline-none">
+                                    5 Months of Magic
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-slate-400">Forever & always yours,</p>
+                            <p id="letterSignOff" class="font-script text-3xl text-champagne-rose font-bold mt-0.5">Prakash</p>
+                        </div>
+                        <div class="w-11 h-11 rounded-full bg-rose-500/15 border border-rose-400/40 flex items-center justify-center text-rose-400">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 4: "5 MONTHS, 5 CHAPTERS" PHOTO MEMORY TIMELINE -->
+        <section id="timelineSection" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs uppercase tracking-[0.25em] text-[#fde68a] font-semibold">Our Monthly Milestones</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-1.5">5 Months, 5 Chapters</h2>
+                <p class="text-xs sm:text-sm text-slate-400 mt-2">Tap <span class="text-[#f4a29c]">Change Photo</span> on any chapter to upload from your phone or computer, or tap <span class="text-[#f4a29c]">Edit</span> to customize the story.</p>
+            </div>
+
+            <div id="chaptersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Rendered via JS -->
+            </div>
+        </section>
+
+        <!-- STAGE 5: "5 SECRET THINGS I ADORE ABOUT YOU" 3D FLIP CARDS -->
+        <section id="secretsSection" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs uppercase tracking-[0.25em] text-[#f4a29c] font-semibold">Frosted Vault Confessions</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-1.5">5 Secret Things I Adore About You</h2>
+                <p class="text-xs sm:text-sm text-slate-400 mt-2">Tap any frosted mystery card to flip it open in 3D, or use the pencil icon to write your own confession.</p>
+            </div>
+
+            <div id="secretsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <!-- Rendered via JS -->
+            </div>
+        </section>
+
+        <!-- STAGE 6: LUXURY 05 ★ V.I.P. KEEPSAKE BOARDING PASS & PHOTO POLAROID STRIP -->
+        <section id="keepsakeSection" class="scroll-mt-24 pt-2">
+            <div class="max-w-2xl mx-auto text-center">
+                <span class="text-xs uppercase tracking-[0.25em] text-[#fde68a] font-semibold">Exclusive Milestone Pass</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-1.5 mb-8">5th Month Keepsake Boarding Pass</h2>
+
+                <!-- Perforated Keepsake Boarding Pass (Captured via html2canvas) -->
+                <div id="keepsakeTicket" class="relative overflow-hidden rounded-3xl p-6 sm:p-9 bg-gradient-to-br from-[#191026] via-[#0e0916] to-[#211022] border border-[#fde68a]/45 shadow-[0_24px_65px_rgba(0,0,0,0.85)] text-center">
+                    <div class="ticket-notch-left"></div>
+                    <div class="ticket-notch-right"></div>
+
+                    <div class="absolute -top-20 -right-20 w-56 h-56 rounded-full bg-rose-500/20 blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-20 -left-20 w-56 h-56 rounded-full bg-amber-300/15 blur-3xl pointer-events-none"></div>
+
+                    <div class="relative z-10 border border-dashed border-[#fde68a]/40 rounded-2xl p-5 sm:p-8 space-y-4">
+                        <!-- Top Row -->
+                        <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-white/10">
+                            <span class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#f4a29c] font-semibold">
+                                05 MONTHS TOGETHER
+                            </span>
+                            <span class="px-3 py-1 rounded-full bg-gradient-to-r from-[#fde68a]/25 to-[#f4a29c]/25 border border-[#fde68a]/65 text-[11px] font-bold tracking-widest text-[#fde68a] shadow-[0_0_16px_rgba(253,230,138,0.28)]">
+                                05 &#9733; V.I.P.
+                            </span>
+                        </div>
+
+                        <!-- Gold-Bordered Circular Couple Photo Avatar -->
+                        <div class="pt-1 flex flex-col items-center">
+                            <div onclick="triggerDirectUpload('ticket')" title="Click to change couple avatar photo" class="group relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-gradient-to-tr from-rose-500 via-[#fde68a] to-[#f4a29c] shadow-[0_0_28px_rgba(253,230,138,0.35)] cursor-pointer transition-transform hover:scale-105">
+                                <div class="w-full h-full rounded-full overflow-hidden bg-[#170e22] relative">
+                                    <img id="ticketPhotoImg" src="" alt="Couple Avatar" crossorigin="anonymous" onerror="handleImageFallback(this, 'Us')" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-black/55 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                                        <i class="fa-solid fa-camera text-white text-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 id="ticketCoupleNames" class="font-serif text-3xl sm:text-5xl font-bold text-white">
+                            Alex & Maya
+                        </h3>
+
+                        <p id="ticketDateLine" class="text-xs uppercase tracking-[0.2em] text-[#f4a29c]">
+                            Departed June 12, 2026 &bull; Destination: Forever
+                        </p>
+
+                        <div class="w-20 h-px bg-gradient-to-r from-transparent via-[#fde68a] to-transparent mx-auto my-2"></div>
+
+                        <p id="ticketSecretNote" class="font-serif italic text-base sm:text-lg text-slate-200 max-w-md mx-auto leading-relaxed">
+                            "Five months down, forever to go. Thank you for being my favorite person, my safe place, and my greatest adventure."
+                        </p>
+
+                        <!-- Mini 3-Photo Polaroid Strip Inside Boarding Pass -->
+                        <div class="grid grid-cols-3 gap-2.5 max-w-sm mx-auto pt-2">
+                            <div class="bg-[#fdfaf5] p-1.5 pb-3 rounded-lg shadow transform -rotate-2">
+                                <img id="stripPhoto1" src="" alt="Memory 1" crossorigin="anonymous" onerror="handleImageFallback(this, 'M01')" class="w-full aspect-square object-cover rounded">
+                                <span class="block font-script text-xs text-slate-800 mt-1">Month 01</span>
+                            </div>
+                            <div class="bg-[#fdfaf5] p-1.5 pb-3 rounded-lg shadow transform translate-y-1">
+                                <img id="stripPhoto2" src="" alt="Memory 2" crossorigin="anonymous" onerror="handleImageFallback(this, 'M03')" class="w-full aspect-square object-cover rounded">
+                                <span class="block font-script text-xs text-slate-800 mt-1">Month 03</span>
+                            </div>
+                            <div class="bg-[#fdfaf5] p-1.5 pb-3 rounded-lg shadow transform rotate-2">
+                                <img id="stripPhoto3" src="" alt="Memory 3" crossorigin="anonymous" onerror="handleImageFallback(this, 'M05')" class="w-full aspect-square object-cover rounded">
+                                <span class="block font-script text-xs text-slate-800 mt-1">Month 05</span>
+                            </div>
+                        </div>
+
+                        <!-- Boarding Pass Footer Stub -->
+                        <div class="pt-4 mt-2 border-t border-dashed border-white/15 flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-slate-400">
+                            <span id="ticketSerial">SERIAL: AM-05M-2026</span>
+                            <span class="text-[#fde68a] font-sans font-semibold">ADMIT TWO HEARTS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button id="downloadKeepsakeBtn" type="button" onclick="downloadKeepsakePNG()" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-[#fde68a]/55 text-amber-100 text-sm font-medium flex items-center justify-center gap-2.5 transition active:scale-95">
+                        <i class="fa-solid fa-download text-[#fde68a]"></i>
+                    
+                    </button>
+
+                    <button type="button" onclick="sendVirtualHug()" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-gradient-to-r from-rose-500 to-rose-600 text-white text-sm font-semibold shadow-[0_0_28px_rgba(244,63,94,0.45)] hover:scale-105 transition transform active:scale-95 flex items-center justify-center gap-2.5">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Reusable Hidden File Input for Instant Device Photo Uploads -->
+    <input type="file" id="devicePhotoInput" accept="image/*" class="hidden" onchange="handleDevicePhotoSelected(event)">
+
+    <!-- =====================================================================
+         MODAL 1: PERSONALIZE & PHOTOS STUDIO
+         ===================================================================== -->
+    <div id="customizeModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel glass-rose-glow rounded-3xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-5">
+                <div>
+                    <h3 class="font-serif text-2xl text-white">Personalize & Photos Studio</h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Changes save automatically to your browser with smart photo compression</p>
+                </div>
+                <button type="button" onclick="closeCustomizeModal()" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 flex items-center justify-center text-slate-300">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form onsubmit="saveCustomization(event)" class="space-y-5">
+                <!-- Names & Passcode -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">MERE BACHAWWWWW</label>
+                        <input type="text" id="inputPartnerName" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">prakash</label>
+                        <input type="text" id="inputYourName" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">4-Digit Passcode</label>
+                        <input type="text" id="inputPasscode" maxlength="4" pattern="\d{4}" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm tracking-widest">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">Relationship Start Date</label>
+                        <input type="date" id="inputStartDate" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">Passcode Hint</label>
+                    <input type="text" id="inputPasscodeHint" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm">
+                </div>
+
+                <!-- Couple Photo Uploaders -->
+                <div class="p-4 rounded-2xl bg-white/[0.03] border border-[#fde68a]/25 space-y-4">
+                    <span class="text-xs uppercase tracking-[0.18em] text-[#fde68a] font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-images"></i> Couple Photos (Upload or Paste URL)
+                    </span>
+
+                    <!-- Hero Photo -->
+                    <div class="space-y-1.5">
+                        <label class="block text-xs text-rose-200 font-medium">1. Hero Couple Spotlight Photo</label>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="inputHeroPhoto" placeholder="Paste image URL..." class="flex-1 px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-xs">
+                            <label class="cursor-pointer px-3.5 py-2 rounded-xl bg-rose-500/20 hover:bg-rose-500/35 border border-rose-400/40 text-xs text-rose-100 flex items-center justify-center gap-1.5 shrink-0 transition">
+                                <i class="fa-solid fa-upload"></i> Upload
+                                <input type="file" accept="image/*" onchange="handleStudioFileUpload(event, 'inputHeroPhoto')" class="hidden">
+                            </label>
+                        </div>
+                        <input type="text" id="inputHeroCaption" placeholder="Hero Polaroid handwritten caption..." class="w-full px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 focus:outline-none focus:border-rose-400 text-xs">
+                    </div>
+
+                    <!-- Letter Polaroid Photo -->
+                    <div class="space-y-1.5 pt-2 border-t border-white/5">
+                        <label class="block text-xs text-rose-200 font-medium">2. Secret Letter Polaroid Photo</label>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="inputLetterPhoto" placeholder="Paste image URL..." class="flex-1 px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-xs">
+                            <label class="cursor-pointer px-3.5 py-2 rounded-xl bg-rose-500/20 hover:bg-rose-500/35 border border-rose-400/40 text-xs text-rose-100 flex items-center justify-center gap-1.5 shrink-0 transition">
+                                <i class="fa-solid fa-upload"></i> Upload
+                                <input type="file" accept="image/*" onchange="handleStudioFileUpload(event, 'inputLetterPhoto')" class="hidden">
+                            </label>
+                        </div>
+                        <input type="text" id="inputLetterCaption" placeholder="Polaroid caption..." class="w-full px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 focus:outline-none focus:border-rose-400 text-xs">
+                    </div>
+
+                    <!-- Ticket Couple Photo -->
+                    <div class="space-y-1.5 pt-2 border-t border-white/5">
+                        <label class="block text-xs text-rose-200 font-medium">3. V.I.P. Keepsake Ticket Couple Avatar</label>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="inputTicketPhoto" placeholder="Paste image URL..." class="flex-1 px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-xs">
+                            <label class="cursor-pointer px-3.5 py-2 rounded-xl bg-rose-500/20 hover:bg-rose-500/35 border border-rose-400/40 text-xs text-rose-100 flex items-center justify-center gap-1.5 shrink-0 transition">
+                                <i class="fa-solid fa-upload"></i> Upload
+                                <input type="file" accept="image/*" onchange="handleStudioFileUpload(event, 'inputTicketPhoto')" class="hidden">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secret Letter Text -->
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">Secret Letter Text</label>
+                    <textarea id="inputSecretLetter" rows="4" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm leading-relaxed"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">Keepsake Boarding Pass Note</label>
+                    <input type="text" id="inputTicketNote" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm">
+                </div>
+
+                <div class="pt-3 flex flex-wrap items-center justify-between gap-3 border-t border-white/10">
+                    <button type="button" onclick="resetToDefaults()" class="px-4 py-2 rounded-full bg-white/5 hover:bg-red-500/20 border border-white/10 hover:border-red-400/40 text-xs text-slate-300 hover:text-red-200 transition">
+                        Reset to Defaults
+                    </button>
+                    <div class="flex items-center gap-2">
+                        <button type="button" onclick="closeCustomizeModal()" class="px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-xs sm:text-sm text-slate-300">Cancel</button>
+                        <button type="submit" class="px-6 py-2 rounded-full bg-gradient-to-r from-rose-500 to-rose-600 text-white text-xs sm:text-sm font-semibold shadow-lg">Save Changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL 2: EDIT MONTHLY CHAPTER MEMORY
+         ===================================================================== -->
+    <div id="chapterModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel glass-rose-glow rounded-3xl max-w-md w-full p-6 sm:p-8">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-5">
+                <h3 class="font-serif text-xl text-white" id="chapterModalTitle">Edit Month 01</h3>
+                <button type="button" onclick="closeChapterModal()" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 flex items-center justify-center text-slate-300">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form onsubmit="saveChapterEdit(event)" class="space-y-4">
+                <input type="hidden" id="editChapterIndex">
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">Chapter Title</label>
+                    <input type="text" id="chapTitleInput" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">Date Label</label>
+                    <input type="text" id="chapDateInput" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">Romantic Memory Note</label>
+                    <textarea id="chapNoteInput" rows="3" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">Chapter Photo (Upload or URL)</label>
+                    <div class="flex gap-2 mb-2">
+                        <input type="text" id="chapPhotoUrlInput" placeholder="Paste image URL..." oninput="updateChapterPreview(this.value)" class="flex-1 px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-xs">
+                        <label class="cursor-pointer px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-dashed border-[#f4a29c]/40 text-xs text-rose-200 flex items-center gap-1.5 shrink-0 transition">
+                            <i class="fa-solid fa-camera text-rose-400"></i>
+                            <span>Upload</span>
+                            <input type="file" accept="image/*" onchange="handleChapterModalFile(event)" class="hidden">
+                        </label>
+                    </div>
+                    <img id="chapPhotoPreview" src="" alt="Preview" class="w-full h-32 object-cover rounded-xl border border-white/10">
+                </div>
+
+                <div class="pt-2 flex justify-end gap-3">
+                    <button type="button" onclick="closeChapterModal()" class="px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-xs text-slate-300">Cancel</button>
+                    <button type="submit" class="px-5 py-2 rounded-full bg-gradient-to-r from-rose-500 to-rose-600 text-white text-xs font-semibold">Save Chapter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL 3: EDIT SECRET ADORE CONFESSION
+         ===================================================================== -->
+    <div id="secretEditModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel glass-rose-glow rounded-3xl max-w-md w-full p-6 sm:p-8">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-5">
+                <h3 class="font-serif text-xl text-white" id="secretEditTitle">Edit Secret #01</h3>
+                <button type="button" onclick="closeSecretEditModal()" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 flex items-center justify-center text-slate-300">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form onsubmit="saveSecretEdit(event)" class="space-y-4">
+                <input type="hidden" id="editSecretIndex">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-slate-400 mb-1.5">Secret Confession Note</label>
+                    <textarea id="secretNoteInput" rows="3" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-rose-400 text-sm"></textarea>
+                </div>
+                <div class="pt-2 flex justify-end gap-3">
+                    <button type="button" onclick="closeSecretEditModal()" class="px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-xs text-slate-300">Cancel</button>
+                    <button type="submit" class="px-5 py-2 rounded-full bg-gradient-to-r from-rose-500 to-rose-600 text-white text-xs font-semibold">Save Secret</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        /* ==========================================================================
+           PERSONAL_CONFIG — EASY SOURCE-CODE CUSTOMIZATION (E.G. FOR GITHUB PAGES)
+           ==========================================================================
+           Edit your names, passcode, start date, secret letter, and photo URLs
+           directly below before deploying or sharing!
+           ========================================================================== */
+        const PERSONAL_CONFIG = {
+            partnerName: "MERA BACHAWW",
+            yourName: "PRAKASH",
+            passcode: "1307",
+            passcodeHint: "Our special 5th month code: 1307",
+            startDate: "2026-07-13", // YYYY-MM-DD (5 months ago)
+            heroPhoto: "Pic/WhatsApp Image 2026-11-13 at 12.16.50 AM.jpeg",
+            heroPhotoCaption: "5 months with my favorite person",
+            letterPhoto: "Pic/WhatsApp Image 2026-11-12 at 11.52.01 PM.jpeg",
+            letterPhotoCaption: "5 Months of Magic",
+            ticketPhoto: "Pic/WhatsApp Image 2026-11-12 at 11.51.10 PM.jpeg",
+            heroSubtitle: "Every second since our story began has been brighter, sweeter, and full of magic. Welcome to our private capsule celebrating 5 unforgettable months together.",
+            secretLetter: [
+                "Happy 5th Month Anniversary, my love. Looking back over the past five months, it feels surreal how effortlessly you became my favorite part of every single day.",
+                "From our very first late-night conversations to the quiet moments where no words are needed, you have brought a warmth and joy into my life that I never knew existed.",
+                "Thank you for your kindness, your laugh, and the way you care so deeply. Five months down—and I cannot wait for every chapter still ahead of us."
+            ],
+            ticketNote: "\"Five months down, forever to go. Thank you for being my favorite person, my safe place, and my greatest adventure.\"",
+            chapters: [
+                {
+                    badge: "Month 01",
+                    
+                    date: "July 2026",
+                    note: "Nervous butterflies, endless smiles, and the instant realization that talking to you felt like coming home.",
+                    photo: "Pic/WhatsApp Image 2026-11-13 at 12.02.42 AM.jpeg"
+                },
+                {
+                    badge: "Month 02",
+                    title: "Late Night Talks",
+                    date: "august 2026",
+                    note: "Losing track of time until 3 AM, sharing our favorite songs, dreams, and inside jokes nobody else gets.",
+                    photo: "Pic/WhatsApp Image 2026-11-13 at 12.00.29 AM (2).jpeg"
+                },
+                {
+                    badge: "Month 03",
+                    date: "sep 2026",
+                    note: "Spontaneous coffee runs, golden-hour walks, and turning even the simplest routines into my favorite dates.",
+                    photo: "Pic/WhatsApp Image 2026-11-13 at 12.00.29 AM (1).jpeg"
+                },
+                {
+                    badge: "Month 04",
+                    date: "october 2026",
+                    note: "Learning all the little details that make you who you are—and falling harder for your heart every single day.",
+                    photo: "Pic/WhatsApp Image 2026-11-13 at 12.10.11 AM.jpeg"
+                },
+                {
+                    badge: "Month 05",
+                    title: "Five Months & Forever",
+                    date: "November 2026",
+                    note: "150+ days of laughter, trust, and magic. Five months together is just the prologue to our forever.",
+                    photo: "Pic/WhatsApp Image 2026-11-12 at 11.52.01 PM.jpeg"
+                }
+            ],
+            secrets: [
+                { num: "01", text: "The way your eyes light up whenever you talk about something you truly love." },
+                { num: "02", text: "How safe, calm, and understood I feel whenever I am right beside you." },
+                { num: "03", text: "Your contagious laugh that can turn my toughest day around in two seconds." },
+                { num: "04", text: "The gentle, thoughtful way you remember the smallest details about us." },
+                { num: "05", text: "Simply being you—effortlessly breathtaking inside and out, every single day." }
+            ]
+        };
+
+        /* ==========================================================================
+           STATE MANAGEMENT, SVG FALLBACKS & CLIENT-SIDE IMAGE COMPRESSION
+           ========================================================================== */
+        const STORAGE_KEY = 'secret5MonthAnniversary_v4';
+
+        function loadState() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return JSON.parse(JSON.stringify(PERSONAL_CONFIG));
+                const parsed = JSON.parse(raw);
+                return { ...JSON.parse(JSON.stringify(PERSONAL_CONFIG)), ...parsed };
+            } catch (e) {
+                return JSON.parse(JSON.stringify(PERSONAL_CONFIG));
+            }
+        }
+
+        let state = loadState();
+        let pinBuffer = "";
+        let clockTimer = null;
+        let activeDirectUploadTarget = null;
+
+        function persistState() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+                return true;
+            } catch (err) {
+                showToast("Storage full! Photo active for this session, or paste an image URL.");
+                return false;
+            }
+        }
+
+        // Graceful inline SVG fallback when offline or if an external URL fails to load
+        function handleImageFallback(imgEl, labelText) {
+            imgEl.onerror = null;
+            const safeLabel = (labelText || 'Our Memory').replace(/[<>&'"]/g, '');
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+                <defs>
+                    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#3b0d22"/>
+                        <stop offset="55%" stop-color="#1b0f26"/>
+                        <stop offset="100%" stop-color="#0d0914"/>
+                    </linearGradient>
+                </defs>
+                <rect width="800" height="600" fill="url(#g)"/>
+                <circle cx="400" cy="260" r="54" fill="rgba(244,63,94,0.18)" stroke="#fde68a" stroke-width="2"/>
+                <path d="M400 282 C400 282 372 263 372 246 C372 237 379 230 388 230 C394 230 398 233 400 237 C402 233 406 230 412 230 C421 230 428 237 428 246 C428 263 400 282 400 282 Z" fill="#fb7185"/>
+                <text x="400" y="355" text-anchor="middle" fill="#fde68a" font-family="Georgia, serif" font-size="28" font-style="italic">${safeLabel}</text>
+                <text x="400" y="388" text-anchor="middle" fill="#f4a29c" font-family="sans-serif" font-size="14" letter-spacing="3">TAP CAMERA TO UPLOAD PHOTO</text>
+            </svg>`;
+            imgEl.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+        }
+
+        // Automatic client-side canvas image compression (maxWidth: 900px, JPEG quality: 0.82)
+        function compressImageFile(file, maxWidth = 900, quality = 0.82) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        let width = img.width;
+                        let height = img.height;
+                        if (width > maxWidth) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
+                        }
+                        const canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = reject;
+                    img.src = event.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function triggerDirectUpload(target) {
+            activeDirectUploadTarget = target;
+            const input = document.getElementById('devicePhotoInput');
+            input.value = '';
+            input.click();
+        }
+
+        async function handleDevicePhotoSelected(e) {
+            const file = e.target.files[0];
+            if (!file || !activeDirectUploadTarget) return;
+            try {
+                const compressed = await compressImageFile(file, 900, 0.82);
+                if (activeDirectUploadTarget === 'hero') {
+                    state.heroPhoto = compressed;
+                } else if (activeDirectUploadTarget === 'letter') {
+                    state.letterPhoto = compressed;
+                } else if (activeDirectUploadTarget === 'ticket') {
+                    state.ticketPhoto = compressed;
+                } else if (activeDirectUploadTarget.startsWith('chapter-')) {
+                    const idx = parseInt(activeDirectUploadTarget.split('-')[1], 10);
+                    if (state.chapters[idx]) state.chapters[idx].photo = compressed;
+                }
+                persistState();
+                renderAll();
+                showToast("Photo uploaded & saved!");
+            } catch (err) {
+                showToast("Could not process image. Please try another file.");
+            }
+        }
+
+        function saveInlineCaption(key, newText) {
+            const clean = newText.trim();
+            if (clean) {
+                state[key] = clean;
+                persistState();
+                showToast("Caption saved!");
+            }
+        }
+
+        /* ==========================================================================
+           STAGE 1: 4-DIGIT SECRET PASSCODE VAULT
+           ========================================================================== */
+        function pressDigit(digit) {
+            if (pinBuffer.length >= 4) return;
+            pinBuffer += digit;
+            updatePinUI();
+            if (pinBuffer.length === 4) {
+                setTimeout(validatePasscode, 180);
+            }
+        }
+
+        function backspacePin() {
+            pinBuffer = pinBuffer.slice(0, -1);
+            updatePinUI();
+        }
+
+        function clearPin() {
+            pinBuffer = "";
+            updatePinUI();
+        }
+
+        function updatePinUI() {
+            const dots = document.querySelectorAll('.pin-dot');
+            dots.forEach((dot, idx) => {
+                if (idx < pinBuffer.length) {
+                    dot.textContent = "•";
+                    dot.classList.add('border-rose-400', 'bg-rose-500/20', 'shadow-[0_0_16px_rgba(244,63,94,0.45)]');
+                } else {
+                    dot.textContent = "";
+                    dot.classList.remove('border-rose-400', 'bg-rose-500/20', 'shadow-[0_0_16px_rgba(244,63,94,0.45)]');
+                }
+            });
+        }
+
+        function validatePasscode() {
+            if (pinBuffer === state.passcode) {
+                unlockVault();
+            } else {
+                const card = document.getElementById('vaultCard');
+                card.classList.remove('animate-shake');
+                void card.offsetWidth;
+                card.classList.add('animate-shake');
+                showToast("Incorrect PIN — try again or tap 'Need a hint?'");
+                pinBuffer = "";
+                setTimeout(updatePinUI, 340);
+            }
+        }
+
+        function toggleHint() {
+            const hintEl = document.getElementById('hintDisplay');
+            hintEl.textContent = state.passcodeHint || PERSONAL_CONFIG.passcodeHint;
+            hintEl.classList.toggle('hidden');
+        }
+
+        function unlockVault() {
+            const padlock = document.getElementById('vaultPadlockIcon');
+            padlock.classList.remove('fa-lock');
+            padlock.classList.add('fa-lock-open');
+
+            confetti({
+                particleCount: 100,
+                spread: 85,
+                origin: { y: 0.55 },
+                colors: ['#fde68a', '#fb7185', '#f4a29c', '#ffffff']
+            });
+
+            setTimeout(() => {
+                document.getElementById('vaultStage').classList.add('hidden');
+                document.getElementById('unlockedExperience').classList.remove('hidden');
+                document.getElementById('reLockBtn').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                showToast("Vault Unlocked • Happy 5th Month Anniversary!");
+            }, 340);
+        }
+
+        function lockVault() {
+            pinBuffer = "";
+            updatePinUI();
+            const padlock = document.getElementById('vaultPadlockIcon');
+            padlock.classList.remove('fa-lock-open');
+            padlock.classList.add('fa-lock');
+            document.getElementById('unlockedExperience').classList.add('hidden');
+            document.getElementById('reLockBtn').classList.add('hidden');
+            document.getElementById('vaultStage').classList.remove('hidden');
+            showToast("Vault Re-Locked");
+        }
+
+        /* ==========================================================================
+           STAGE 2 TO 6 RENDERING & LIVE RELATIONSHIP CLOCK
+           ========================================================================== */
+        function startRelationshipClock() {
+            if (clockTimer) clearInterval(clockTimer);
+            function updateClock() {
+                const start = new Date(state.startDate + "T00:00:00");
+                const now = new Date();
+                let months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+                const anchor = new Date(start);
+                anchor.setMonth(anchor.getMonth() + months);
+                if (anchor > now) {
+                    months = Math.max(0, months - 1);
+                    anchor.setMonth(start.getMonth() + months);
+                }
+                const diff = Math.max(0, now - anchor);
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const mins = Math.floor((diff / (1000 * 60)) % 60);
+                const secs = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('clockMonths').textContent = months;
+                document.getElementById('clockDays').textContent = days;
+                document.getElementById('clockHours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('clockMinutes').textContent = String(mins).padStart(2, '0');
+                document.getElementById('clockSeconds').textContent = String(secs).padStart(2, '0');
+            }
+            updateClock();
+            clockTimer = setInterval(updateClock, 1000);
+        }
+
+        function formatDisplayDate(iso) {
+            const d = new Date(iso + "T00:00:00");
+            if (isNaN(d.getTime())) return iso;
+            return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year
